@@ -12,10 +12,7 @@ import styled from "styled-components";
 const itemMatchesFilter = (data, word) => {
   let res = false;
   Object.keys(data).some((key) => {
-    if (
-      key !== "id" &&
-      data[key].toLowerCase().includes(word.toLowerCase())
-    ) {
+    if (key !== "id" && data[key].toLowerCase().includes(word.toLowerCase())) {
       res = true;
     }
   });
