@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# React Table Plugin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple plugin for create table for React.js
 
-## Available Scripts
+# Get started
 
-In the project directory, you can run:
+**Requirements**
 
-### `npm start`
+- React 18.2.0+
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Installation**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Using npm `npm install @matthieumelin/mm-react-table`
+- Using yarn `yarn add @matthieumelin/mm-react-table`
 
-### `npm test`
+**Usage**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `datas` (array): a data list
+- `attibutes` (array): a list of attributes
 
-### `npm run build`
+_App.js (default)_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+import React, { useState } from "react";
+import Table from "@matthieumelin/mm-react-table";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const App = () => {
+  const attributes = [
+    {
+      name: "First Name",
+      value: "firstName",
+    },
+    {
+      name: "Last Name",
+      value: "lastName",
+    },
+    {
+      name: "Start Date",
+      value: "startDate",
+    },
+    {
+      name: "Department",
+      value: "department",
+    },
+    {
+      name: "Date of Birth",
+      value: "dateOfBirth",
+    },
+    {
+      name: "Street",
+      value: "street",
+    },
+    {
+      name: "City",
+      value: "city",
+    },
+    {
+      name: "State",
+      value: "state",
+    },
+    {
+      name: "Zip Code",
+      value: "zipCode",
+    },
+  ];
+  const [datas, setDatas] = useState([
+    {
+      id: 1,
+      firstName: "Kenneth",
+      lastName: "Langenfeld",
+      startDate: "2021-04-12",
+      department: "Legal",
+      dateOfBirth: "1999-06-20",
+      street: "561 Edgewood Avenue",
+      city: "Fresno",
+      state: "CA",
+      zipCode: "93704",
+    },
+    {
+      id: 2,
+      firstName: "James",
+      lastName: "Maclean",
+      startDate: "2018-02-30",
+      department: "Sales",
+      dateOfBirth: "1961-07-13",
+      street: "2633 Freshour Circle",
+      city: "San Antonio",
+      state: "TX",
+      zipCode: "78238",
+    },
+  ]);
+  return (
+    <div className="App">
+      <Table datas={datas} attributes={attributes} />
+    </div>
+  );
+};
+export default App;
+```
