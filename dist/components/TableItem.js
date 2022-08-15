@@ -19,10 +19,10 @@ function TableItem(_ref) {
   let {
     data
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement(TableRow, null, Object.keys(data, index).map(key => {
+  return /*#__PURE__*/_react.default.createElement(TableRow, null, Object.values(data).map((value, index) => {
     return /*#__PURE__*/_react.default.createElement(TableData, {
       key: index
-    }, key);
+    }, value);
   }));
 }
 

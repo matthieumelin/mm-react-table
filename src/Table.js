@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import PropTypes from "prop-types";
+
 import InputSearch from "./components/InputSearch";
 import SelectEntries from "./components/SelectEntries";
 import EntriesInfo from "./components/EntriesInfo";
@@ -8,6 +10,8 @@ import TableHeader from "./components/TableHeader";
 import TableItem from "./components/TableItem";
 
 import styled from "styled-components";
+
+import { camalize } from "./utils/Formatter";
 
 const itemMatchesFilter = (data, word) => {
   let res = false;
@@ -30,8 +34,9 @@ const listFiltering = (data, searchedWords) => {
 };
 
 const listSorting = (a, b, attribute, order) => {
-  const textA = a[attribute].toLowerCase();
-  const textB = b[attribute].toLowerCase();
+  const camalizeAttribute = camalize(attribute);
+  const textA = a[camalizeAttribute] instanceof String ? a[camalizeAttribute].toLowerCase() : String(a[camalizeAttribute]);
+  const textB = b[camalizeAttribute] instanceof String ? b[camalizeAttribute].toLowerCase() : String(b[camalizeAttribute]);
 
   let res;
 
@@ -45,7 +50,9 @@ const listSorting = (a, b, attribute, order) => {
 
 export default function Table({ datas, attributes }) {
   const [filter, setFilter] = useState([""]);
-  const [sorterAttribute, setSorterAttribute] = useState("");
+  const [sorterAttribute, setSorterAttribute] = useState(
+    attributes[0].name || ""
+  );
   const [sorterOrder, setSorterOrder] = useState(true);
   const [maxEntryNumber, setMaxEntryNumber] = useState(10);
   const [startIndex, setStartIndex] = useState(0);
@@ -100,8 +107,14 @@ export default function Table({ datas, attributes }) {
   );
 }
 
+Table.propTypes = {
+  datas: PropTypes.array,
+  attributes: PropTypes.array,
+};
+
 Table.defaultProps = {
   datas: [],
+  attrutes: [],
 };
 
 const StyledTable = styled.div`

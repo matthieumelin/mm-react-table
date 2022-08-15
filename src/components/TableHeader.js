@@ -72,8 +72,7 @@ const StyledTableHeader = styled.thead``;
 const TableHeaderCell = styled.th`
   cursor: pointer;
   text-align: left;
-  color: ${(props) =>
-    props.isSorter ? props.sorterColor : "black"};
+  color: black;
   border-bottom: 1px solid grey;
 `;
 const TableHeaderRow = styled.tr``;

@@ -1,6 +1,6 @@
 {
     "name": "@matthieumelin/mm-react-table",
-    "version": "1.0.0",
+    "version": "2.4.0",
     "private": false,
     "description": "A simple plugin for create table.",
     "main": "./dist/Table.js",

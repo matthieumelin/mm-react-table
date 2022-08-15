@@ -5,8 +5,8 @@ import styled from "styled-components";
 export default function TableItem({ data }) {
   return (
     <TableRow>
-      {Object.keys(data, index).map((key) => {
-        return <TableData key={index}>{key}</TableData>;
+      {Object.values(data).map((value, index) => {
+        return <TableData key={index}>{value}</TableData>;
       })}
     </TableRow>
   );

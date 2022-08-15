@@ -72,6 +72,6 @@ TableHeader.propTypes = {
 
 const StyledTableHeader = _styledComponents.default.thead(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
 
-const TableHeaderCell = _styledComponents.default.th(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  cursor: pointer;\n  text-align: left;\n  color: ", ";\n  border-bottom: 1px solid grey;\n"])), props => props.isSorter ? props.sorterColor : "black");
+const TableHeaderCell = _styledComponents.default.th(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  cursor: pointer;\n  text-align: left;\n  color: black;\n  border-bottom: 1px solid grey;\n"])));
 
 const TableHeaderRow = _styledComponents.default.tr(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral([""])));
