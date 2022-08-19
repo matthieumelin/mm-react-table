@@ -31,8 +31,6 @@ var _TableItem = _interopRequireDefault(require("./components/TableItem"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _Formatter = require("./utils/Formatter");
-
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -65,9 +63,8 @@ const listFiltering = (data, searchedWords) => {
 };
 
 const listSorting = (a, b, attribute, order) => {
-  const camalizeAttribute = (0, _Formatter.camalize)(attribute);
-  const textA = a[camalizeAttribute] instanceof String ? a[camalizeAttribute].toLowerCase() : String(a[camalizeAttribute]);
-  const textB = b[camalizeAttribute] instanceof String ? b[camalizeAttribute].toLowerCase() : String(b[camalizeAttribute]);
+  const textA = a[attribute];
+  const textB = b[attribute];
   let res;
 
   if (textA === "" || textB === "") {
@@ -85,7 +82,7 @@ function Table(_ref) {
     attributes
   } = _ref;
   const [filter, setFilter] = (0, _react.useState)([""]);
-  const [sorterAttribute, setSorterAttribute] = (0, _react.useState)(attributes[0].name || "");
+  const [sorterAttribute, setSorterAttribute] = (0, _react.useState)("");
   const [sorterOrder, setSorterOrder] = (0, _react.useState)(true);
   const [maxEntryNumber, setMaxEntryNumber] = (0, _react.useState)(10);
   const [startIndex, setStartIndex] = (0, _react.useState)(0);

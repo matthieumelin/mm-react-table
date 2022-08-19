@@ -11,8 +11,6 @@ import TableItem from "./components/TableItem";
 
 import styled from "styled-components";
 
-import { camalize } from "./utils/Formatter";
-
 const itemMatchesFilter = (data, word) => {
   let res = false;
   Object.keys(data).some((key) => {
@@ -32,11 +30,9 @@ const listFiltering = (data, searchedWords) => {
   }
   return res;
 };
-
 const listSorting = (a, b, attribute, order) => {
-  const camalizeAttribute = camalize(attribute);
-  const textA = a[camalizeAttribute] instanceof String ? a[camalizeAttribute].toLowerCase() : String(a[camalizeAttribute]);
-  const textB = b[camalizeAttribute] instanceof String ? b[camalizeAttribute].toLowerCase() : String(b[camalizeAttribute]);
+  const textA = a[attribute];
+  const textB = b[attribute];
 
   let res;
 
@@ -50,9 +46,7 @@ const listSorting = (a, b, attribute, order) => {
 
 export default function Table({ datas, attributes }) {
   const [filter, setFilter] = useState([""]);
-  const [sorterAttribute, setSorterAttribute] = useState(
-    attributes[0].name || ""
-  );
+  const [sorterAttribute, setSorterAttribute] = useState("");
   const [sorterOrder, setSorterOrder] = useState(true);
   const [maxEntryNumber, setMaxEntryNumber] = useState(10);
   const [startIndex, setStartIndex] = useState(0);
